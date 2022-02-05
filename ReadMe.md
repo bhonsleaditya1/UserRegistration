@@ -1,12 +1,12 @@
 # Setting Up Project
 
 - [x] clone the project
-- [ ] install and configure mysql 
-- [ ] run 'npm install' in /backend/userlogin-app & /frontend/userlogin-app
-- [ ] add .env for /backend/userlogin-app
-- [ ] run 'npm run build' in /frontend/userlogin-app
-- [ ] run 'npm start' in /backend/userlogin-app
-- [ ] visit https://localhost:3000/ to view site
+- [x] install and configure mysql 
+- [x] run 'npm install' in /backend/userlogin-app & /frontend/userlogin-app
+- [x] add .env for /backend/userlogin-app
+- [x] run 'npm run build' in /frontend/userlogin-app
+- [x] run 'npm start' in /backend/userlogin-app
+- [x] visit https://localhost:3000/ to view site
 - [ ] add heroku remote and push to deploy 
 
 ## Sample .env
