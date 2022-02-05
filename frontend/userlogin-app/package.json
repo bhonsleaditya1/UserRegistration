@@ -6,7 +6,7 @@
     "start": "ng serve",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build": "rm -rf ../../backend/front/ && mkdir ../../backend/front/ && ng build --prod && mv dist/userlogin-app/* ../../backend/front/"
+    "build": "rm -rf ../../backend/userlogin-app/front/ && mkdir ../../backend/userlogin-app/front/ && ng build --prod && mv dist/userlogin-app/* ../../backend/userlogin-app/front/"
   },
   "private": true,
   "dependencies": {
