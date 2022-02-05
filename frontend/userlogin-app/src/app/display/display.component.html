@@ -1,0 +1,39 @@
+<button (click)="refreshData()" class="btn btn-primary">Refresh Data</button>
+<br>
+<br>
+<!-- {{search|json}} -->
+<table class="table">
+    <thead>
+        <tr>
+            <ng-container *ngFor="let form of forms">
+                <th scope="col">
+                    <a href="#">{{form.name}}</a>
+                    <br>
+                    <input type="text" [(ngModel)]="search[form.name]">
+                </th>
+            </ng-container>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <ng-container *ngIf="!user.edit">
+                <ng-container *ngFor="let form of forms">
+                    <td>{{user[form.variable]}}</td>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="user.edit">
+                <ng-container *ngFor="let form of forms">
+                    <td><input value={{user[form.variable]}} [(ngModel)]=user[form.variable]></td>
+                </ng-container>
+            </ng-container>
+
+            <td *ngIf="!user.edit"><button (click)="toggle(user)" class="btn btn-link">Change</button></td>
+            <ng-container *ngIf="user.edit">
+                <td><button (click)="deleteUser(user)" class="btn btn-danger">Delete</button></td>
+                <td><button (click)="editUser(user)" class="btn btn-warning">Edit</button></td>
+                <td><button class="btn btn-link">X</button></td>
+            </ng-container>
+        </tr>
+    </tbody>
+
+</table>

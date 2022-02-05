@@ -1,0 +1,39 @@
+<!-- {{user|json}} -->
+<div class="container border col-md-6">
+    <p class='col fill'>Registration</p>
+    <div class='col' [hidden]="submitted">
+        <form (ngSubmit)="onSubmit()" [formGroup]="ngForm" novalidate>
+            <div class="form-row" *ngFor="let form of forms">
+                <label for="{{form.label}}">{{form.label}}</label>
+                <ng-container *ngIf='form.type==="dropdown";else other'>
+                    <select class="form-control" formControlName="{{form.variable}}" required
+                        [(ngModel)]="user[form.variable]" id="{{form.variable}}">
+                        <option *ngFor="let value of form.values" value="{{value}}">{{value}}</option>
+                    </select>
+                </ng-container>
+                <ng-template #other>
+                    <ng-container *ngIf='form.variable==="checkPassword";else common'>
+                        <input type="{{form.type}}" class="form-control" required placeholder="{{form.label}}"
+                            formControlName="{{form.variable}}" pattern="{{user['password']}}"                           
+                            [(ngModel)]="user[form.variable]">
+                        <div *ngIf="user['checkPassword']!=user['password']" class="alert alert-danger"> Password & Confirm Password
+                            does not match.</div>
+                    </ng-container>
+                    <ng-template #common>
+                        <input type="{{form.type}}" class="form-control" required placeholder="{{form.label}}"
+                            formControlName="{{form.variable}}" pattern="{{form.pattern}}"
+                            [(ngModel)]="user[form.variable]">
+                    </ng-template>
+                </ng-template>
+                <div *ngIf="
+                ngForm.controls[form.variable].dirty &&  ngForm.controls[form.variable].invalid "  class="alert alert-danger">
+                    {{form.label}} is invalid
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary" (click)="addUser()" [disabled]="!ngForm.valid">Submit</button>
+    <br>
+</div>
